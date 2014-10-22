@@ -39,6 +39,8 @@ RUN apt-get clean
 # Enable IDO for MySQL. This is needed by icinga-web.
 RUN icinga2-enable-feature ido-mysql
 
+RUN mkdir -p /var/lib/icinga/rw && ln -s /var/run/icinga2/cmd/icinga2.cmd /var/lib/icinga/rw/icinga.cmd
+
 ADD entrypoint.sh /entrypoint.sh
 RUN chmod u+x /entrypoint.sh
 
